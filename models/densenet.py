@@ -93,7 +93,7 @@ class DenseNet(BaseModel):
         output = tf.nn.relu(self.batch_normalization(x, training=self.is_training))
 
         feature_size = int(output.get_shape()[-2])
-        output = tf.layers.average_pooling2d(output, pool_size=feature_size, strides=1)
+        output = tf.layers.average_pooling2d(output, pool_size=feature_size, strides=feature_size)
 
         features_num = int(output.get_shape()[-1])
         output = tf.reshape(output, [-1, features_num])
