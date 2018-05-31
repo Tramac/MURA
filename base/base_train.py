@@ -11,8 +11,7 @@ class BaseTrain(object):
         self.sess = sess
         self.train_data = train_data
         self.valid_data = valid_data
-        # self.init = tf.group(tf.global_variables_initializer(), tf.local_variables_initializer())
-        self.init = tf.initialize_all_variables()
+        self.init = tf.group(tf.global_variables_initializer(), tf.local_variables_initializer())
         self.sess.run(self.init)
 
     def train(self):
