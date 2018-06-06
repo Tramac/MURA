@@ -54,7 +54,7 @@ class DenseNet(BaseModel):
         self.train_step = tf.train.AdamOptimizer(self.learning_rate, name="Adam").minimize(self.loss,
                                                                                            global_step=self.global_step_tensor)
 
-        correct_prediction = tf.equal(tf.argmax(self.prediction, 1), self.labels)
+        correct_prediction = tf.equal(tf.argmax(self.prediction, 1, output_type=tf.int32), self.labels)
         self.accuracy = tf.reduce_mean(tf.cast(correct_prediction, tf.float32))
 
         return self.prediction
